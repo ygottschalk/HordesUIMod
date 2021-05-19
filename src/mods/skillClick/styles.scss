@@ -1,0 +1,12 @@
+.uimod-skill-click-overlay {
+	pointer-events: all;
+	z-index: 10;
+	//background: rgba(0, 0, 0, 0);
+	position: absolute;
+	width: 46px;
+	height: 46px;
+	cursor: pointer;
+}
+.slot.filled + .uimod-skill-click-overlay {
+	cursor: pointer;
+}

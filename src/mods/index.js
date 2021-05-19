@@ -19,6 +19,7 @@ import depositAll from './depositAll';
 import lockedItemSlots from './lockedItemSlots';
 import screenshotMode from './screenshotMode';
 import buffTooltips from './buffTooltips';
+import skillClick from './skillClick';
 
 // The array here dictates the order of which mods are executed, from top to bottom
 export default [
@@ -43,4 +44,5 @@ export default [
 	lockedItemSlots,
 	screenshotMode,
 	buffTooltips,
+	skillClick,
 ];
