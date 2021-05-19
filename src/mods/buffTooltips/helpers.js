@@ -43,11 +43,22 @@ function _addBuffTooltip(mouseEvent, $buff) {
 		$buffTooltip.querySelector('.js-buff-tooltip-effects').style.display = 'none';
 	}
 
-	// Make tooltip visible near mouse
-	$buffTooltip.setAttribute(
-		'style',
-		`left: ${mouseEvent.pageX}px; top: ${mouseEvent.pageY - 50}px; display: block;`,
-	);
+	const boundingRect = $buff.getBoundingClientRect();
+
+	if ($buff.closest('.buffarray.party')) {
+		$buffTooltip.setAttribute(
+			'style',
+			`left: ${boundingRect.x + boundingRect.width + 3}px; top: ${
+				boundingRect.y
+			}px; display: block; transform: none;`,
+		);
+	} else {
+		$buffTooltip.setAttribute(
+			'style',
+			`left: ${boundingRect.x}px; top: ${boundingRect.y -
+				3}px; display: block; transform: translateY(-100%);`,
+		);
+	}
 }
 
 function removeBuffTooltip() {
@@ -58,16 +69,15 @@ function removeBuffTooltip() {
 }
 
 function handleBuffTooltipDisplay(mouseEvent, $buff) {
-	const $elementMouseIsOver = document.elementFromPoint(mouseEvent.clientX, mouseEvent.clientY);
+	const $buffMouseIsOver = document
+		.elementFromPoint(mouseEvent.clientX, mouseEvent.clientY)
+		.closest('.slot.js-buff-tooltip-initd');
 	// If mouse is over cooldown overlay or icon image of buff icon
-	if (
-		$elementMouseIsOver.classList.contains('cd') ||
-		$elementMouseIsOver.classList.contains('icon')
-	) {
+	if ($buffMouseIsOver) {
 		// If there is no $buff but we are over the buff icon, then this is the document.body
 		// removeBuffTooltip handler, so we don't want to add the buff tooltip
 		// TODO: Consider cleaning up this logic
-		if ($buff) _addBuffTooltip(mouseEvent, $buff);
+		if ($buff && $buff === $buffMouseIsOver) _addBuffTooltip(mouseEvent, $buff);
 	} else {
 		removeBuffTooltip();
 	}
