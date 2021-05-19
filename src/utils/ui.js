@@ -101,7 +101,7 @@ function removeModToggler() {
 	const $customSettingsWindow = document.querySelector('.js-mod-toggler');
 	$customSettingsWindow.parentNode.removeChild($customSettingsWindow);
 
-	setWindowClosed(WindowNames.blockList);
+	setWindowClosed(WindowNames.modToggler);
 }
 
 function createBlockList() {
