@@ -31,11 +31,11 @@ function init() {
 			}
 		});
 
-		skillOverlay.addEventListener('pointerup', () => {
+		skillOverlay.addEventListener('pointerup', event => {
 			const inSkillDragState = document.querySelector(
 				'.slotskill:not(#skillbar .slotskill, #skilllist .slotskill)',
 			);
-			if (inSkillDragState || tempState.keyModifiers.alt) {
+			if (inSkillDragState || event.altKey || tempState.keyModifiers.alt) {
 				skill.dispatchEvent(new Event('pointerup'));
 				window.addEventListener('click', cancelClick, {
 					capture: true,

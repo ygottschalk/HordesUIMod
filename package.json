@@ -1,6 +1,6 @@
 {
 	"name": "hordesuimod",
-	"version": "1.6.2",
+	"version": "1.6.3",
 	"description": "Userscript mod for hordes.io",
 	"main": "src/compile.js",
 	"scripts": {
